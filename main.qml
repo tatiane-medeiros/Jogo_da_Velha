@@ -12,7 +12,7 @@ Window {
     height: 500
     minimumHeight: 200
     minimumWidth: 200
-     color: "#0091EA"
+     color: "#0036f9"
      property var mode: Item{ visible: false}
 
      Rectangle{
