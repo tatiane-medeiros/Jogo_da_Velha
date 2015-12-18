@@ -108,12 +108,17 @@ Window {
     }
      Rectangle{
          visible: menu.visible
-         color: "#B388FF"
+         //color: "#B388FF"
+         gradient: Gradient {
+                GradientStop { position: 0.0; color: "#B388FF" }
+                GradientStop { position: 0.5; color: "white" }
+                GradientStop { position: 1.0; color: "#B388FF" }
+            }
          width: 300
          height: 320
          x: parent.width/2 - 150
          y: parent.height * 0.1
-         radius: 10
+         radius: 12
      }
 
     Item {
@@ -442,10 +447,10 @@ Window {
         width: 300
         height: 60
         anchors.top: game.bottom
+        anchors.horizontalCenter: game.horizontalCenter
         color: "transparent"
         Text {
-            id: round
-            x:(page.width)/5
+            id: round            
             anchors.verticalCenter: parent.verticalCenter
             text: qsTr("rodada: "+mode.round+"\t")
             color: "yellow"
@@ -474,6 +479,32 @@ Window {
             text: qsTr("jogador 2: "+mode.p2+"\t")
             color: "yellow"
             font.bold: true
+        }
+
+    }
+    Rectangle{
+        id: button1
+        visible: mode.visible
+        x: page.width - 100
+        y: page.height *0.02
+        width: 70
+        height: 30
+        color: "#B388FF"
+        radius: 10
+        Text {
+            anchors.centerIn: parent
+            id: tx
+            text: qsTr("voltar")
+            color: "yellow"
+            font.bold: true
+        }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                mode.clear()
+                mode.visible = false
+                menu.visible = true
+            }
         }
     }
 }
